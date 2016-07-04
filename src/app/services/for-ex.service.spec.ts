@@ -11,8 +11,10 @@ import { ForExService } from './for-ex.service';
 describe('RestfulService Service', () => {
   beforeEachProviders(() => [ForExService]);
 
-  it('should ...',
+  it('Should create a vaid service',
       inject([ForExService], (service: ForExService) => {
     expect(service).toBeTruthy();
   }));
+
+  
 });

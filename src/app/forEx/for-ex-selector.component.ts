@@ -13,10 +13,10 @@ import {ForExService} from '.././services/for-ex.service';
 
 
 export class ForExSelectorComponent implements OnInit, OnChanges {
-  private data: any = {}
-  private model: IModel = <IModel>{};
-  private inputValues: any = [];
-  private currencyResult: number = 1;
+   data: any = {}
+   model: IModel = <IModel>{};
+   inputValues: any = [];
+   currencyResult: number;
   constructor(private _currencyService: ForExService) {
    
     
