@@ -10,14 +10,15 @@ import { AppComponent } from './app.component';
 
 beforeEachProviders(() => [AppComponent]);
 
-describe('App: NavExRateFinder', () => {
+describe('Main App: NavExRateFinder', () => {
   it('should create the app',
       inject([AppComponent], (app: AppComponent) => {
     expect(app).toBeTruthy();
   }));
 
-  it('should have as title \'app works!\'',
+  it('should have as title \'Exchange Rate Finder\'',
       inject([AppComponent], (app: AppComponent) => {
-    expect(app.title).toEqual('app works!');
+    expect(app.title).toEqual('Exchange Rate Finder');
   }));
+
 });

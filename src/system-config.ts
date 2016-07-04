@@ -7,10 +7,12 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  'bootstrap':'vendor/bootstrap'
 };
 
 /** User packages configuration. */
 const packages: any = {
+ 
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,6 +35,7 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
+  'app/forex/for-ex-selector',
   /** @cli-barrel */
 ];
 

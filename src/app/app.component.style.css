@@ -1,0 +1,14 @@
+nav {
+    background: #054264;
+}
+
+nav > div {
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
