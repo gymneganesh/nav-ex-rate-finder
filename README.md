@@ -1,16 +1,16 @@
 # NavExRateFinder
     - Author :  Nav
     - Version : 1.0.0
-This project was generated with Angular cli which is a command line interface to scaffold and build angular apps using nodejs style (commonJs) modules.
 
 Tools/Framework used
     - Angular2
     - Typescript
     - Jasmine    
-    - Protractor 
+    - Protractor
+    - This project was generated with Angular cli which is a command line interface to scaffold and build angular apps using nodejs style (commonJs) modules. 
 
 #Prerequisites 
-it requires npm version 3.x and the latest node  v6.x (atleast it should get than v4.x)
+it requires npm version 3.x and the latest node  v6.x (atleast it should be greater than v4.x)
 typings v1 or greater
 
 #steps to setUp the environment
@@ -37,13 +37,13 @@ NOTE :
      >npm cache clean
      >npm install -g angular-cli@latest
      - Install/Update Protractor and webdriver manager
+ ::::::  in package.json remove "sudo" in the attribute  {"postinstall": "sudo typings install"}, if you run the app in windows machine.
+
+## Build
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ## Running unit tests
 
