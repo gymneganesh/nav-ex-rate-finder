@@ -1,0 +1,46 @@
+<div class="row foxexConatiner" >
+  <div class="col-lg-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form action="" method="POST" role="form">
+          <legend>Currency Converter</legend>
+          <div *ngIf="currencyResult < 0">
+            <div  class="alert alert-danger" id="errorMsg">
+                Unable to find rate for {{model.fromCurrency}}/{{model.toCurrency}}  !!!
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label for="">From</label>
+              <select id="fromCurrency" class="form-control" [(ngModel)]="model.fromCurrency" (ngModelChange)="onCurrencyChange('input')" required>
+              <option *ngFor="let currency of getCurrencies()" >{{currency}}</option>
+         </select>
+
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label for="">To</label>
+              <select id="toCurrency" class="form-control" [(ngModel)]="model.toCurrency" (ngModelChange)="onCurrencyChange('input')" required>
+              <option *ngFor="let currency of getCurrencies()">{{currency}}</option>
+         </select>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label for="">From Value</label>
+              <input id="inputValue" type="number" class="form-control" placeholder="Enter value" [(ngModel)]="model.inputValue" (ngModelChange)="onCurrencyChange('input')" [disabled]="currencyResult <0">
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label for="">To Value</label>
+              <input id="outputValue" type="number" class="form-control" placeholder="Enter value" [(ngModel)]="model.outputValue" (ngModelChange)="onCurrencyChange('output')" [disabled]="currencyResult <0">
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
