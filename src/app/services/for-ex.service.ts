@@ -11,17 +11,17 @@ export class ForExService {
       this.mockData = new Mockdata();
   }
 
+  //get all available currencies 
   getAllCurrencies() {
     return Promise.resolve(this.mockData.getAllCurrencies());
 
   }
-
+  
   getOutputResults(inputObj: [any]) {
     return  (this.performOperation(inputObj));
   } 
 
-
-
+//func to get lookup result and exec correspoding target
   performOperation(inputObj: any) {
 
     var result = this.getResultFromTableObject(inputObj);

@@ -29,6 +29,7 @@ export class ForExSelectorComponent implements OnInit, OnChanges {
 
   }
 
+//initialize model to default values
   initModel(){
     this.model.fromCurrency = "AUD";
     this.model.toCurrency = "AUD";
