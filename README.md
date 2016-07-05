@@ -2,7 +2,7 @@
     - Author :  Nav
     - Version : 1.0.0
 
-Tools/Framework used
+#Tools/Framework used
     - Angular2
     - Typescript
     - Jasmine    
@@ -30,12 +30,12 @@ typings v1 or greater
 
 
 
-NOTE :
-    If any issues follow the below :
+#NOTE :
+   - If any issues follow the below :
     -Update npm and node version to match the requirements
-     >sudo npm uninstall -g angular-cli
-     >npm cache clean
-     >npm install -g angular-cli@latest
+    - >sudo npm uninstall -g angular-cli
+    - >npm cache clean
+    - >npm install -g angular-cli@latest
      - Install/Update Protractor and webdriver manager
  ::::::  in package.json remove "sudo" in the attribute  {"postinstall": "sudo typings install"}, if you run the app in windows machine.
 
