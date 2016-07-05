@@ -3,7 +3,7 @@
     - Version : 1.0.0
 This project was generated with Angular cli which is a command line interface to scaffold and build angular apps using nodejs style (commonJs) modules.
 
-Tools/Framework
+Tools/Framework used
     - Angular2
     - Typescript
     - Jasmine    
@@ -15,22 +15,28 @@ typings v1 or greater
 
 #steps to setUp the environment
 
-- go to the project foler and exec npm install in your bash terminal
+    -download lastest version of Node (v6.x)
+
+    exec the following commands if you havent installed before
+        >sudo npm install -g typescript
+        >sudo npm install -g typings
+        >sudo npm install -g protractor
+        >sudo npm install -g angular-cli@latest
+        >sudo webdriver-manger update
+        >npm install
+
+    else  exec below from git-bash
+        >npm install
+
+
 
 NOTE :
-
+    If any issues follow the below :
     -Update npm and node version to match the requirements
-    -install the latest version of angular-cli via npm or if you already have angular-cli then exec following commands
      >sudo npm uninstall -g angular-cli
      >npm cache clean
      >npm install -g angular-cli@latest
      - Install/Update Protractor and webdriver manager
-     >sudo npm install -g protractor
-     >webdriver-manger update
-
-
-    
-
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
