@@ -1,24 +1,5 @@
 /* tslint:disable:no-unused-variable */
 
-/**
- *  MockFxService
- */
-class MockFxService {
-  constructor() {
-
-  }
-
-  public getAllCurrencies() {
-    return Promise.resolve({base:"12",date:"12032016",rates:{ "AUD": 0.091714, "BGN": 0.12051}});
-  }
-  public getPercisionForCurrency(input: any) {
-    return 2;
-  }
-
-  public getOutputResults(inputValues: any) {
-    return 3;
-  }
-}
 
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -38,13 +19,11 @@ import {Mockdata} from '../services/mockdata';
 import { provide } from '@angular/core';
 
 
-beforeEachProviders(() => [ForExSelectorComponent, Mockdata]);
+beforeEachProviders(() => [ForExSelectorComponent, ForExService, Mockdata]);
 
-beforeEachProviders(()=>[
-   provide(ForExService, {useClass: MockFxService})
-])
-
-
+// beforeEachProviders(() => [
+//  // provide(ForExService, { useClass: MockFxService })
+// ])
 
 describe('Component: ForExSelector', () => {
 
@@ -60,16 +39,81 @@ describe('Component: ForExSelector', () => {
   })
   );
 
-  it('should invoke getAllCurrencies method', inject([ForExSelectorComponent, ForExService], (forExComp: ForExSelectorComponent, forExService: ForExService) => {
-    spyOn(forExService,'getAllCurrencies').and.callFake(()=>{
-     return Promise.resolve(1)
-   });
-    forExComp.ngOnInit();    
-    expect(forExService.getAllCurrencies).toHaveBeenCalled();
+  it('should test 1:1 feed scenario', inject([ForExSelectorComponent, ForExService], (forExComp: ForExSelectorComponent, forExService: ForExService) => {
+    spyOn(forExComp, 'onCurrencyChange').and.callThrough();
+    forExComp.ngOnInit();
+    forExComp.model.fromCurrency = "AUD";
+    forExComp.model.toCurrency = "AUD";
+    forExComp.model.inputValue = 1;
+    forExComp.onCurrencyChange('input');
+    expect(forExComp.onCurrencyChange).toHaveBeenCalled();
+    expect(forExComp.model.outputValue).toBe(1);
+
+  })
+  );
+  it('should test direct feed scenario', inject([ForExSelectorComponent, ForExService], (forExComp: ForExSelectorComponent, forExService: ForExService) => {
+    spyOn(forExComp, 'onCurrencyChange').and.callThrough();
+    forExComp.ngOnInit();
+    forExComp.model.fromCurrency = "AUD";
+    forExComp.model.toCurrency = "USD";
+    forExComp.model.inputValue = 1;
+    forExComp.onCurrencyChange('input');
+    expect(forExComp.onCurrencyChange).toHaveBeenCalled();
+    expect(forExComp.model.outputValue).toBe(0.84);
+
+  })
+  );
+  it('should test inverted feed scenario', inject([ForExSelectorComponent, ForExService], (forExComp: ForExSelectorComponent, forExService: ForExService) => {
+    spyOn(forExComp, 'onCurrencyChange').and.callThrough();
+    forExComp.ngOnInit();
+    forExComp.model.fromCurrency = "USD";
+    forExComp.model.toCurrency = "AUD";
+    forExComp.model.inputValue = 1;
+    forExComp.onCurrencyChange('input');
+    expect(forExComp.onCurrencyChange).toHaveBeenCalled();
+    expect(forExComp.model.outputValue).toBe(1.19);
+
   })
   );
 
+  it('should test cross feed scenario', inject([ForExSelectorComponent, ForExService], (forExComp: ForExSelectorComponent, forExService: ForExService) => {
+    spyOn(forExComp, 'onCurrencyChange').and.callThrough();
+    forExComp.ngOnInit();
+    forExComp.model.fromCurrency = "AUD";
+    forExComp.model.toCurrency = "JPY";
+    forExComp.model.inputValue = 0;
+    forExComp.model.inputValue = 1;
+    forExComp.onCurrencyChange('input');
+    expect(forExComp.onCurrencyChange).toHaveBeenCalled();
+    expect(forExComp.model.outputValue).toBe(100);
 
+  })
+  );
+
+  it('should have percision "0" for JPY ', inject([ForExSelectorComponent, ForExService], (forExComp: ForExSelectorComponent, forExService: ForExService) => {
+
+    forExComp.ngOnInit();
+    forExComp.model.toCurrency = "JPY";
+    var percision = forExComp.getPercision();
+    expect(percision).toBe(0);
+  })
+  );
+
+  it('should have percision "2" for AUD', inject([ForExSelectorComponent, ForExService], (forExComp: ForExSelectorComponent, forExService: ForExService) => {
+    forExComp.ngOnInit();
+    forExComp.model.toCurrency = "AUD";
+
+    var percision = forExComp.getPercision();
+    expect(percision).toBe(2);
+  })
+  );
+
+  it('should invoke getAllCurrencies method', inject([ForExSelectorComponent, ForExService], (forExComp: ForExSelectorComponent, forExService: ForExService) => {
+    var result = spyOn(forExService, 'getAllCurrencies').and.callThrough();
+    forExComp.ngOnInit();
+    expect(forExService.getAllCurrencies).toHaveBeenCalled();
+  })
+  );
 
 
 });
