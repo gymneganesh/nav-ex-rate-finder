@@ -19,7 +19,6 @@ typings v1 or greater
 
 NOTE :
 
-{ 
     -Update npm and node version to match the requirements
     -install the latest version of angular-cli via npm or if you already have angular-cli then exec following commands
      >sudo npm uninstall -g angular-cli
@@ -28,7 +27,7 @@ NOTE :
      - Install/Update Protractor and webdriver manager
      >sudo npm install -g protractor
      >webdriver-manger update
-}
+
 
     
 
@@ -71,6 +70,6 @@ Before running the tests make sure you are serving the app via `ng serve`.
         -dist 
             :contains all compiled low level javascript file (plain JS)
         -e2e 
-            :contains all the e2e test case (exec >ng e2e from bash to see the output)
+            filename ->app.e2e-spec.ts :contains all the e2e test case (exec >ng e2e from bash to see the output)
 
 
